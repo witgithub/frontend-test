@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'assets/scss/reset';
+@import 'assets/scss/colors';
+@import 'assets/scss/partials/tables';
+@import 'assets/scss/partials/buttons';
+
+html,
+body {
+  height: 100%;
+  background: #f3f4f6;
+//   color: $fontBaseColor;
+}

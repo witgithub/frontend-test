@@ -1,0 +1,48 @@
+<table
+  appTableFixedHeader
+  class="table table--with-checkboxes table--with-buttons"
+>
+  <thead>
+    <tr>
+      <th>
+        Avatar
+      </th>
+      <th>Name</th>
+      <th>Company</th>
+      <th>
+        Actions
+      </th>
+    </tr>
+  </thead>
+
+  <ng-container *ngIf="usersList && usersList.length; else notFound">
+    <tbody>
+      <tr *ngFor="let user of usersList">
+        <td>
+          <img [src]="user.avatarUrl" />
+        </td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.company }}</td>
+        <td>
+          <div class="table__actions">
+            <a [routerLink]="['/users/edit', user.id]"
+              ><button class="btn btn-primary" type="button">Edit</button></a
+            >
+            <button class="btn btn-primary" type="button" (click)="removeUserHandler(user.id)">
+              Delete
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </ng-container>
+  <ng-template #notFound>
+    <tbody>
+      <tr>
+        <td colspan="4" class="text-center">
+          No users found.
+        </td>
+      </tr>
+    </tbody>
+  </ng-template>
+</table>

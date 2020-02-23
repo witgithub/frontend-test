@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend-test';
+  handler() {
+    const a  = document.querySelector('.red') as HTMLElement;
+    a.classList.remove('red');
+    a.classList.add('blue');
+    
+    console.log(a)
+  }
 }
+
+
+

@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="controls">
+    <div class="controls_search"></div>
+    <a [routerLink]="['/users/add-user']"
+      ><button class="btn btn-primary" type="button">Add User</button></a
+    >
+  </div>
+
+  <app-users-list
+    [usersList]="(usersList$ | async)?.items"
+    (removeUser)="removeUserHandler($event)"
+  ></app-users-list>
+  <app-paginator [pagination]="queryParams | async" [totalCount]="(usersList$ | async)?.totalCount"></app-paginator>
+</div>

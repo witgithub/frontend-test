@@ -1,0 +1,45 @@
+<form [formGroup]="form" class="form" (ngSubmit)="addUser(form)">
+  <div class="form__control-wrapper">
+    <label class="form__label">
+      Name:
+    </label>
+    <input type="text" name="name" class="form__input" formControlName="name" />
+  </div>
+
+  <div class="form__control-wrapper">
+    <label class="form__label">
+      Company:
+    </label>
+    <input type="text" name="company" class="form__input" formControlName="company" />
+  </div>
+
+  <div class="form__control-wrapper">
+    <label class="form__label">
+      Address:
+    </label>
+    <input type="text" name="address" class="form__input" formControlName="address" />
+  </div>
+
+  <div class="form__control-wrapper">
+    <label class="form__label">
+      About:
+    </label>
+    <textarea name="about" class="form__input" formControlName="about">
+
+    </textarea>
+    <!-- <input type="text" name="about" class="form__input" formControlName="about" /> -->
+  </div>
+
+  <div class="form__control-wrapper">
+    <label class="form__label">
+      E-mail:
+    </label>
+    <input type="email" name="email" class="form__input" formControlName="email" />
+  </div>
+
+  <div class="form__actions">
+    <button class="btn btn-primary" type="submit">Add User</button>
+  </div>
+  
+</form>
+

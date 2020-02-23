@@ -1,0 +1,31 @@
+.pagination {
+  display: flex;
+  &__item {
+    height: 34px;
+    min-width: 34px;
+    padding: 0 5px;
+    border: 1px solid #dddddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    color: lightgrey;
+    margin-left: -1px;
+
+    &:first-child {
+      margin: 0;
+    }
+
+    &:hover {
+      background: #dddddd;
+    }
+
+    &--active {
+      background-color: #838383;
+      color: #fff;
+    }
+  }
+}
