@@ -1,27 +1,93 @@
+@import '_colors';
+
 .form {
-    flex-direction: column;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  margin-top: 40px;
+  &__header {
+    font-size: 40px;
+    text-decoration: underline;
+    margin-bottom: 20px;
+  }
+  &__label {
+    width: 25%;
+    text-align: right;
+    padding-right: 20px;
+    @media screen and (max-width: 767px) {
+      text-align: left;
+    }
+  }
+  &__control-wrapper {
     display: flex;
     align-items: center;
     width: 100%;
-    max-width: 700px;
-    margin: 0 auto;
-    margin-top: 40px;
-    
-    &__label {
-        width: 25%;
-        text-align: right;
-        padding-right: 20px;
+    margin-bottom: 15px;
+    @media screen and (max-width: 767px) {
+      flex-direction: column;
+      align-items: flex-start;
     }
-    &__control-wrapper {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        margin-bottom: 15px;
+  }
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    @media screen and (max-width: 767px) {
+      justify-content: space-between;
     }
-    &__actions {
-        display: flex;
-        justify-content: flex-end;
-        width: 100%;
+  }
+  &__input-wrapper {
+      width: 100%;
+      position: relative;
+  }
+  &__tags-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  &__tag-control {
+    display: flex;
+    align-items: center;
+  }
+  &__avatar {
+      max-height: 50px;
+      max-width: 50px;
+  }
+  &__error {
+    color: red;
+    font-size: 13px;
+    position: absolute;
+  }
+  &__remove-tag {
+      margin-left: 10px;
+  }
+  &__add-tag {
+      width: 150px;
+  }
+  &__input,
+  &__textarea {
+    padding: 6px 12px 6px 15px;
+    font-size: 14px;
+    line-height: 1.42;
+    color: map-get($form, form-field-color);
+    background-color: map-get($form, form-field-backgoround-color);
+    background-image: none;
+    border: 1px solid map-get($form, form-field-border-color);
+    margin: 8px 0;
+    width: 100%;
+    &:hover,
+    &:active,
+    &:focus {
+      outline: none;
     }
-    
+  }
+  &__button {
+    margin-right: 10px;
+  }
+  &__textarea {
+    min-height: 200px;
+  }
 }

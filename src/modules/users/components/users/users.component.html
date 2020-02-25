@@ -1,8 +1,8 @@
 <div class="container">
   <div class="controls">
-    <div class="controls_search"></div>
+    <app-filter (search)="searchHandler($event)" [query]="searchQuery"></app-filter>
     <a [routerLink]="['/users/add-user']"
-      ><button class="btn btn-primary" type="button">Add User</button></a
+      ><button class="btn btn-primary" type="button">Create User</button></a
     >
   </div>
 
@@ -10,5 +10,9 @@
     [usersList]="(usersList$ | async)?.items"
     (removeUser)="removeUserHandler($event)"
   ></app-users-list>
-  <app-paginator [pagination]="queryParams | async" [totalCount]="(usersList$ | async)?.totalCount"></app-paginator>
+  <app-paginator
+    class="paginator"
+    [pagination]="queryParams | async"
+    [totalCount]="(usersList$ | async)?.totalCount"
+  ></app-paginator>
 </div>

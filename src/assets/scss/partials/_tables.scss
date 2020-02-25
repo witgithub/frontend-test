@@ -1,77 +1,57 @@
 .table {
-    border-collapse: collapse;
-    width: 100%;
-    border: 1px solid #d7dce6;
-  
-    &--with-checkboxes {
-      th:first-of-type,
-      td:first-of-type {
-        width: 1px;
-      }
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #d7dce6;
+
+  &--with-buttons {
+    th:last-of-type,
+    td:last-of-type {
+      width: 1px;
+      text-align: right;
+      white-space: nowrap;
     }
-  
-    &--with-buttons {
-      th:last-of-type,
-      td:last-of-type {
-        width: 1px;
-        text-align: right;
-        white-space: nowrap;
-      }
+  }
+  td,
+  th {
+    height: 50px;
+    padding: 5px 20px;
+    text-align: left;
+    vertical-align: middle;
+
+    &.text-center {
+      text-align: center;
     }
-  
-    td,
-    th {
-      height: 50px;
-      padding: 10px 20px;
-      text-align: left;
-      vertical-align: middle;
-  
-      &.text-center {
-        text-align: center;
-      }
-  
-      img {
-        height: 40px;
-      }
+
+    img {
+      height: 40px;
     }
-  
-    thead {
-      background: #fff;
-      border-bottom: 1px solid #d7dce6;
-      font-size: 16px;
+  }
+
+  thead {
+    background: #fff;
+    border-bottom: 1px solid #d7dce6;
+    font-size: 16px;
+    line-height: 1.3em;
+  }
+
+  tbody {
+    tr {
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 300;
       line-height: 1.3em;
-    }
-  
-    tbody {
-      tr {
-        font-size: 13px;
-        font-weight: 300;
-        line-height: 1.3em;
-  
-        &:nth-child(even) {
-          background-color: #fff;
-        }
-  
-        &:nth-child(odd) {
-          background-color: rgba(#f3f4f6, 0.5);
-        }
+      outline: none;
+      &:hover {
+        transform: scale(1.01);
+        background-color: lightblue;
+        color: red;
       }
-    }
-  
-    &-cloned {
-      position: absolute;
-      top: 0;
-  
-      &--fixed {
-        position: fixed;
-        top: 0;
-        z-index: 10;
-        background: #fff;
+      &:nth-child(even) {
+        background-color: #fff;
+      }
+      &:nth-child(odd) {
+        background-color: rgba(#f3f4f6, 0.5);
       }
     }
   }
-  
-  .fixed-table-wrapper {
-    position: relative;
-  }
-  
+}

@@ -1,0 +1,83 @@
+<section class="details">
+  <h1 class="details__header">
+    User Details
+  </h1>
+  <div class="details__row">
+    <div class="details__label">
+      Avatar:
+    </div>
+    <div class="details__value">
+      <img [src]="user.avatarUrl" />
+    </div>
+  </div>
+  <div class="details__row">
+    <div class="details__label">
+      Full name:
+    </div>
+    <div class="details__value">
+      {{ user.name }}
+    </div>
+  </div>
+  <div class="details__row">
+    <div class="details__label">
+      Company:
+    </div>
+    <div class="details__value">
+      {{ user.company }}
+    </div>
+  </div>
+  <div class="details__row">
+    <div class="details__label">
+      E-mail:
+    </div>
+    <div class="details__value">
+      {{ user.email }}
+    </div>
+  </div>
+  <div class="details__row">
+    <div class="details__label">
+      Phone:
+    </div>
+    <div class="details__value">
+      {{ user.phone }}
+    </div>
+  </div>
+  <div class="details__row">
+    <div class="details__label">
+      Address:
+    </div>
+    <div class="details__value">
+      {{ user.address }}
+    </div>
+  </div>
+  <div class="details__row">
+    <div class="details__label">
+      About:
+    </div>
+    <div class="details__value">
+      {{ user.about }}
+    </div>
+  </div>
+  <div class="details__row">
+    <div class="details__label">
+      Tags:
+    </div>
+    <div class="details__value">
+      <span class="details__tag" *ngFor="let tag of user.tags"
+        >{{ tag }},
+      </span>
+    </div>
+  </div>
+  <div class="details__row">
+    <div class="details__label">
+      Created:
+    </div>
+    <div class="details__value">
+      {{ user.createdAt | date: 'dd MM yyyy' }}
+    </div>
+  </div>
+
+  <a (click)="backToList()"
+    ><button type="button" class="btn btn-primary">Go Back</button></a
+  >
+</section>

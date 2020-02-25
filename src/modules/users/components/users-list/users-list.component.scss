@@ -1,9 +1,21 @@
+:host {
+  display: block;
+  @media screen and (max-width: 767px) {
+    overflow-x: scroll;
+  }
+}
 .table {
-    &__actions {
-        display: flex;
-    }
+  &__actions {
+    display: flex;
+  }
+  &__sort-header {
+    cursor: pointer;
+  }
+  &__sort-arrow {
+    height: 10px;
+  }
 }
 
 .btn {
-    margin-left: 10px;
+  margin-left: 10px;
 }

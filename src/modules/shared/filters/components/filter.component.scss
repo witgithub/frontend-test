@@ -1,0 +1,9 @@
+.form {
+    &__input {
+        cursor: pointer; 
+        max-width: 175px;
+        padding: 4px 12px 6px 4px;
+        font-size: 14px;
+        line-height: 1.42;
+    }
+}

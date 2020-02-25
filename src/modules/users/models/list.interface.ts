@@ -1,5 +1,5 @@
 export interface List<T> {
-    items: T[];
-    totalCount: number;
-    pageCount: number;
+  items: T[];
+  totalCount: number;
+  pageCount: number;
 }

@@ -1,0 +1,27 @@
+.details {
+    width: 100%;
+    &__header {
+        font-size: 40px;
+        text-decoration: underline;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    &__header-photo {
+        width: 200px;
+    }
+    &__row {
+        display: flex;
+        padding: 10px 20px;
+        border-bottom: 1px solid;
+        &:last-of-type{
+            margin-bottom: 10px;
+        }
+    }
+    &__label {
+        min-width: 100px;
+    }
+    &__value {
+        text-align: left;
+    }
+}
+

@@ -1,24 +1,29 @@
-<ul *ngIf="pager && pager.pages && pager.pages.length && pager.totalPages > 1" class="pagination">
-    <!-- <li
-      class="pagination__item"
-      [ngClass]="{ disabled: pager.currentPage === 1 }"
-      (click)="setPage(pager.currentPage - 1)"
-      *ngIf="showPrevButton()">
-      <img src="../../../../assets/images/pagination/pagi-arrow-left.svg">
-    </li> -->
-    <li
-      class="pagination__item"
-      *ngFor="let page of pager.pages"
-      [ngClass]="{ 'pagination__item--active': +pager.currentPage === page }"
-      (click)="setPage(page)">
-      <a>{{ page }}</a>
-    </li>
-    <!-- <li
-      class="pagination__item"
-      [ngClass]="{ disabled: pager.currentPage === pager.totalPages }"
-      (click)="setPage(pager.currentPage + 1)"
-      *ngIf="showNextButton()">
-      <img src="../../../../assets/images/pagination/pagi-arrow-right.svg">
-    </li> -->
-  </ul>
-  
+<ul
+  *ngIf="pager && pager.pages && pager.pages.length && pager.totalPages > 1"
+  class="pagination"
+>
+  <li
+    class="pagination__item"
+    [ngClass]="{ disabled: pager.currentPage === 1 }"
+    (click)="setPage(+pager.currentPage - 1)"
+    *ngIf="showPrevButton()"
+  >
+    <img src="../../../../assets/img/pagi-arrow-left.svg" />
+  </li>
+  <li
+    class="pagination__item"
+    *ngFor="let page of pager.pages"
+    [ngClass]="{ 'pagination__item--active': +pager.currentPage === page }"
+    (click)="setPage(page)"
+  >
+    <a>{{ page }}</a>
+  </li>
+  <li
+    class="pagination__item"
+    [ngClass]="{ disabled: pager.currentPage === pager.totalPages }"
+    (click)="setPage(+pager.currentPage + 1)"
+    *ngIf="showNextButton()"
+  >
+    <img src="../../../../assets/img/pagi-arrow-right.svg" />
+  </li>
+</ul>

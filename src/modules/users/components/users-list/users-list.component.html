@@ -1,14 +1,16 @@
-<table
-  appTableFixedHeader
-  class="table table--with-checkboxes table--with-buttons"
->
+<table class="table table--with-buttons">
   <thead>
     <tr>
       <th>
         Avatar
       </th>
-      <th>Name</th>
-      <th>Company</th>
+      <th class="table__sort-header" appSort [sortField]="'name'">
+        Name
+        <img class="table__sort-arrow" src="../../../../assets/img/dropdown.png">
+      </th>
+      <th class="table__sort-header" appSort [sortField]="'company'">Company
+        <img class="table__sort-arrow" src="../../../../assets/img/dropdown.png">
+      </th>
       <th>
         Actions
       </th>
@@ -17,7 +19,10 @@
 
   <ng-container *ngIf="usersList && usersList.length; else notFound">
     <tbody>
-      <tr *ngFor="let user of usersList">
+      <tr
+        *ngFor="let user of usersList"
+        [routerLink]="['/users/details', user.id]"
+      >
         <td>
           <img [src]="user.avatarUrl" />
         </td>
@@ -25,11 +30,17 @@
         <td>{{ user.company }}</td>
         <td>
           <div class="table__actions">
-            <a [routerLink]="['/users/edit', user.id]"
+            <a
+              [routerLink]="['/users/edit', user.id]"
+              (click)="$event.stopPropagation()"
               ><button class="btn btn-primary" type="button">Edit</button></a
             >
-            <button class="btn btn-primary" type="button" (click)="removeUserHandler(user.id)">
-              Delete
+            <button
+              class="btn btn-primary"
+              type="button"
+              (click)="removeUserHandler(user.id)"
+            >
+              Remove
             </button>
           </div>
         </td>

@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { User } from '../../models/user.class';
-import { Observable } from 'rxjs';
+import { Observable, merge } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { List } from '../../models/list.interface';
 import { UsersService } from '../../services/users.service';
+import { Sort } from '../../models/sort.interface';
 
 @Component({
   selector: 'app-users',
@@ -23,30 +24,37 @@ export class UsersComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.initPagination();
-    this.init();
-    
+    this.setPagination();
+    this.usersList$ = merge(
+      this.usersService.users$,
+      this.activatedRoute.data.pipe(map(data => data.usersList)),
+    );
   }
 
-  initPagination(): void {
+  get searchQuery() {
+    return this.activatedRoute.snapshot.queryParams.search;
+  }
+
+  private setPagination(): void {
+    if (!this.activatedRoute.snapshot.queryParams.page) {
+      this.router.navigate(['.'], {
+        queryParams: { page: 1, limit: 20 },
+        queryParamsHandling: 'merge',
+        relativeTo: this.activatedRoute,
+        preserveFragment: false
+      });
+    }
+  }
+
+  public searchHandler(search: { search: string }): void {
     this.router.navigate(['.'], {
-      queryParams: { page: 1, limit: 20 },
+      queryParams: { ...search, page: 1 },
       queryParamsHandling: 'merge',
       relativeTo: this.activatedRoute,
     });
   }
 
-  init(): void {
-
-    this.usersList$ = this.usersService.users;
-    
-    // this.usersList$ = this.activatedRoute.data.pipe(
-    //   map(data => data.usersList),
-    // );
-  }
-
-  removeUserHandler(userId: string): void {
+  public removeUserHandler(userId: string): void {
     this.usersService.removeUser(userId);
-    // this.usersList$ = this.usersService.getUsers(this.activatedRoute.snapshot.queryParams);
   }
 }

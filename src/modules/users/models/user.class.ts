@@ -1,13 +1,22 @@
+import { createUUID } from '../../shared/helpers/create-uuid.function';
 export class User {
   constructor(
-    public readonly id: string,
-    public readonly avatarUrl: string,
-    public readonly name: string,
-    public readonly company: string,
-    public readonly email: string,
-    public readonly phone: string,
-    public readonly address: string,
-    public readonly createdAt: number,
-    public readonly tags: string[]
-  ) {}
+    public avatarUrl: string,
+    public name: string,
+    public company: string,
+    public email: string,
+    public phone: string,
+    public address: string,
+    public about: string,
+    public tags: string[],
+    public readonly createdAt?: number,
+    public readonly id?: string,
+  ) {
+    if (!this.createdAt) {
+      this.createdAt = Date.now();
+    }
+    if (!this.id) {
+      this.id = createUUID();
+    }
+  }
 }

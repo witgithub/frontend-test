@@ -1,45 +1,145 @@
-<form [formGroup]="form" class="form" (ngSubmit)="addUser(form)">
+<form [formGroup]="form" class="form" (ngSubmit)="emitUserData(form)">
+  <h1 class="form__header">
+    {{ user ? 'User Edit Form' : 'User Create Form' }}
+  </h1>
+  <div class="form__control-wrapper">
+    <label class="form__label">
+      Avatar:
+    </label>
+    <div class="form__input-wrapper">
+      <img class="form__avatar" [src]="avatarUrl" />
+      <input
+        type="text"
+        name="name"
+        class="form__input"
+        formControlName="avatarUrl"
+      />
+    </div>
+  </div>
+
   <div class="form__control-wrapper">
     <label class="form__label">
       Name:
     </label>
-    <input type="text" name="name" class="form__input" formControlName="name" />
+    <div class="form__input-wrapper">
+      <input
+        type="text"
+        name="name"
+        class="form__input"
+        formControlName="name"
+      />
+      <div class="form__error" *ngIf="isRequired('name')">
+        This field is required
+      </div>
+    </div>
   </div>
 
   <div class="form__control-wrapper">
     <label class="form__label">
       Company:
     </label>
-    <input type="text" name="company" class="form__input" formControlName="company" />
+
+    <div class="form__input-wrapper">
+      <input
+        type="text"
+        name="company"
+        class="form__input"
+        formControlName="company"
+      />
+      <div class="form__error" *ngIf="isRequired('company')">
+        This field is required
+      </div>
+    </div>
   </div>
 
   <div class="form__control-wrapper">
     <label class="form__label">
       Address:
     </label>
-    <input type="text" name="address" class="form__input" formControlName="address" />
+    <input
+      type="text"
+      name="address"
+      class="form__input"
+      formControlName="address"
+    />
   </div>
 
   <div class="form__control-wrapper">
     <label class="form__label">
       About:
     </label>
-    <textarea name="about" class="form__input" formControlName="about">
-
+    <textarea name="about" class="form__textarea" formControlName="about">
     </textarea>
-    <!-- <input type="text" name="about" class="form__input" formControlName="about" /> -->
   </div>
 
   <div class="form__control-wrapper">
     <label class="form__label">
       E-mail:
     </label>
-    <input type="email" name="email" class="form__input" formControlName="email" />
+    <input
+      type="email"
+      name="email"
+      class="form__input"
+      formControlName="email"
+    />
+  </div>
+
+  <div class="form__control-wrapper">
+    <label class="form__label">
+      Phone:
+    </label>
+    <input
+      type="text"
+      name="phone"
+      class="form__input"
+      formControlName="phone"
+    />
+  </div>
+
+  <div class="form__control-wrapper">
+    <label class="form__label">
+      Tags:
+    </label>
+    <div class="form__tags-wrapper">
+      <div
+        class="form__tag-control"
+        *ngFor="let control of tagsControls; index as i"
+      >
+        <input
+          type="text"
+          name="phone"
+          class="form__input"
+          [formControl]="tagsControls[i]"
+        />
+        <button
+          type="button"
+          class="btn btn-primary form__remove-tag"
+          (click)="removeTag(i)"
+        >
+          X
+        </button>
+      </div>
+      <button
+        type="button"
+        class="btn btn-primary form__add-tag"
+        (click)="addNewTag()"
+      >
+        Add Tag
+      </button>
+    </div>
   </div>
 
   <div class="form__actions">
-    <button class="btn btn-primary" type="submit">Add User</button>
-  </div>
-  
-</form>
+    <button
+      class="form__button btn btn-primary"
+      (click)="goBack()"
+      type="button"
+    >
+      Go Back
+    </button>
 
+    <button class="btn btn-primary" type="submit">
+      {{ user ? 'Edit User' : 'Create User' }}
+    </button>
+  </div>
+</form>

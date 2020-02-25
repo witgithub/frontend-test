@@ -2,29 +2,35 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UsersComponent } from './components/users/users.component';
 import { UsersListResolver } from './services/users-list.resolver';
-import { UserFormComponent } from './components/user-form/user-form.component';
-import { UserDetailsResolver } from './services/user-edit.resolver';
-
+import { UserResolver } from './services/user.resolver';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { UserFormContainerComponent } from './components/user-form-container/user-form-container.component';
 
 const routes: Routes = [
   {
     path: '',
     component: UsersComponent,
     resolve: {
-      usersList: UsersListResolver
+      usersList: UsersListResolver,
     },
-    runGuardsAndResolvers: 'always',
+    runGuardsAndResolvers: 'paramsOrQueryParamsChange',
   },
   {
     path: 'edit/:id',
-    component: UserFormComponent,
-    resolve: { userDetails: UserDetailsResolver },
+    component: UserFormContainerComponent,
+    resolve: { user: UserResolver },
     canActivate: [],
   },
   {
     path: 'add-user',
-    component: UserFormComponent,
-    
+    component: UserFormContainerComponent,
+  },
+  {
+    path: 'details/:id',
+    component: UserDetailsComponent,
+    resolve: {
+      details: UserResolver,
+    },
   },
 ];
 

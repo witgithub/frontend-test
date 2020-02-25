@@ -25,12 +25,15 @@
       true,
       "rxjs/Rx"
     ],
+    "no-namespace": false,
     "interface-name": false,
     "max-classes-per-file": false,
     "max-line-length": [
       true,
       140
     ],
+    "no-bitwise": false,
+    "no-shadowed-variable": false,
     "member-access": false,
     "member-ordering": [
       true,
@@ -54,7 +57,7 @@
     ],
     "no-empty": false,
     "no-inferrable-types": [
-      true,
+      false,
       "ignore-params"
     ],
     "no-non-null-assertion": true,
